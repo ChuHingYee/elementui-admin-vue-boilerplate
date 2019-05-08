@@ -1,0 +1,193 @@
+@import './mixins.scss';
+
+// 导航栏
+.el-aside {
+  overflow: hidden; //配合el-scrollbar
+}
+
+.el-menu {
+  border-right: 0;
+
+  .iconfont {
+    margin-right: 8px;
+    color: #fff;
+  }
+
+  .el-menu-item {
+    height: 40px;
+    line-height: 40px;
+    background: #0e223a;
+    @include text-hide;
+    padding: 0 !important;
+    color: #fff;
+
+    .router-link-exact-active {
+      background-color: #05111f !important;
+      color: #fff !important;
+      background: linear-gradient(90deg,
+        rgba(14, 34, 58, 1) 0%,
+        rgba(5, 17, 31, 1) 100%);
+    }
+
+    * {
+      vertical-align: inherit !important;
+    }
+  }
+
+  .el-submenu__title {
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    background: #0e223a;
+  }
+
+  .el-submenu {
+    .sider-link {
+      padding: 0 20px;
+    }
+
+    .el-menu-item {
+      height: 40px;
+      line-height: 40px;
+      padding-left: 20px !important;
+    }
+  }
+}
+
+.el-menu--collapse {
+  .sider-link {
+    padding: 0;
+  }
+}
+
+.el-menu--popup {
+  max-height: 400px;
+  overflow: auto;
+
+  .sider-link {
+    @include flex-start-center;
+  }
+}
+
+.el-menu:not(.el-menu--collapse) {
+  width: 200px;
+  padding: 0;
+
+  &-item {
+    width: 100%;
+  }
+}
+
+//对话框
+.el-dialog {
+  border-radius: 4px;
+
+  .el-dialog__header {
+    padding: 16px 24px;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .el-dialog__body {
+    padding: 24px;
+  }
+
+  .el-dialog__footer {
+    border-top: 1px solid #e8e8e8;
+    padding: 10px 16px;
+    text-align: right;
+    border-radius: 0 0 4px 4px;
+  }
+}
+
+//表单
+.el-table th {
+  background: #eee;
+  color: #333;
+}
+
+.el-table__expanded-cell[class*='cell'] {
+  padding: 12px;
+}
+
+.el-table__fixed-right-patch {
+  background: #eee;
+}
+
+.table-header {
+  .el-form-item {
+    margin-bottom: 10px;
+  }
+}
+
+// 分页
+.el-pagination button,
+.el-pagination span:not([class*='suffix']) {
+  height: 24px;
+  line-height: 24px;
+}
+
+.el-pagination .btn-prev,
+.btn-prev {
+  padding: 0;
+}
+
+.el-pagination__jump {
+  min-width: 24px !important;
+  margin-left: 12px;
+  vertical-align: baseline;
+}
+
+.el-pagination__editor.el-input .el-input__inner {
+  height: 24px;
+}
+
+.el-pager li {
+  margin: 0;
+  min-width: 24px;
+  height: 24px;
+  line-height: 22px;
+  font-size: 14px;
+  text-align: center;
+  background-color: #fff;
+  font-family: Arial;
+  font-weight: 400;
+  vertical-align: baseline;
+}
+
+.el-pager li.active {
+  color: $--color-primary;
+  cursor: default;
+  border: 1px solid $--color-primary;
+  border-radius: 4px;
+}
+
+//树
+.el-tree-node__expand-icon {
+  font-size: 15px;
+  padding: 0 6px 0 0;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.el-icon-caret-right:before {
+  font-family: 'iconfont';
+  content: '\e696';
+}
+
+.el-tree-node__expand-icon.expanded {
+  transform: none;
+
+  &:before {
+    font-family: 'iconfont';
+    content: '\e701';
+  }
+}
+
+.el-tree-node__expand-icon.is-leaf {
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 18px;
+
+  &:before {
+    font-family: 'iconfont';
+    content: '\e61a';
+  }
+}

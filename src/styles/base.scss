@@ -1,0 +1,88 @@
+@import './mixins.scss';
+@import './custom.scss';
+@import '../assets/font/iconfont.css';
+
+.custom {
+
+    //对话框
+    &-dialog {
+        /deep/.el-dialog__body {
+            position: relative;
+        }
+
+        &-mask {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            z-index: 2333;
+            background: rgba(0, 0, 0, 0.04);
+        }
+    }
+
+    //脚部
+    &-footer {
+        &-btn {
+            position: fixed;
+            z-index: 86;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            height: 44px;
+            background: #fff;
+            padding: 8px 20px;
+            @include flex-end-center();
+            border-top: 1px solid #e8e8e8;
+            margin-bottom: 0;
+        }
+    }
+
+    //表格
+    &-table {
+
+        //表单页面头部
+        &-header {
+            .el-form-item {
+                margin-bottom: 10px;
+            }
+        }
+
+        //表单页面详情
+        &-expand {
+            font-size: 12px;
+            @include flex-start-center();
+
+            &-item {
+                width: 25%;
+                height: 50px;
+                @include flex-start-center();
+                border-top: 1px solid #d6d6d6;
+                border-bottom: 1px solid #d6d6d6;
+                border-right: 1px solid #d6d6d6;
+
+                .item-label {
+                    width: 30%;
+                    height: 100%;
+                    @include flex-center-center();
+                    border-right: 1px solid #d6d6d6;
+                    background: #eee;
+                    color: #333;
+                }
+
+                .item-container {
+                    width: 70%;
+                    height: 100%;
+                    @include flex-center-center();
+                }
+            }
+        }
+    }
+
+    //上传图片
+    &-upload {
+        /deep/.el-dialog__body {
+            @include flex-center-center;
+        }
+    }
+}

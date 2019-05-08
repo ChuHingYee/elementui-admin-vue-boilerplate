@@ -1,0 +1,22 @@
+.num {
+  display: inline-block;
+  font-size: 12px;
+
+  &-icon {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 4px;
+    border: 3px solid transparent;
+    position: relative;
+  }
+
+  &-plus {
+    border-bottom-color: #f5222d;
+    top: -2px;
+  }
+
+  &-minus {
+    border-top-color: #52c41a;
+  }
+}

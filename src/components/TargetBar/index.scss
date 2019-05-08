@@ -1,0 +1,44 @@
+.custom--target {
+  display: inline-block;
+  width: 100%;
+  padding: 5px 0;
+
+  &-bar {
+    width: 100%;
+    height: 8px;
+    background: #eee;
+    position: relative;
+
+    &-current {
+      position: absolute;
+      background: #618CFE;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    &-target {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+
+      .target-icon {
+        display: inline-block;
+        width: 2px;
+        height: 4px;
+        position: absolute;
+        left: -2px;
+        background: #618CFE
+      }
+
+      .target-top {
+        top: -4px;
+      }
+
+      .target-bottom {
+        bottom: -4px;
+      }
+    }
+  }
+}

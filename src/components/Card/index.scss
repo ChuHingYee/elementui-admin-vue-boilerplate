@@ -1,0 +1,17 @@
+.custom--card {
+  &-header {
+    @include flex-between-center;
+    font-size: 12px;
+    color: #a1a1a1;
+  }
+
+  &-body {
+    padding-bottom: 5px;
+  }
+
+  &-footer {
+    padding-top: 5px;
+    border-top: 1px solid #dfdfdf;
+    font-size: 12px;
+  }
+}

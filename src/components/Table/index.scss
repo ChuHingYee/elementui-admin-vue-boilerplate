@@ -1,0 +1,27 @@
+.table-wrapper {
+  position: relative;
+  &-arrow {
+    position: absolute;
+    top: 50%;
+    margin-top: -34px;
+    right: 0;
+    opacity: 0.2;
+    cursor: pointer;
+    width: 20px;
+    height: 30px;
+    @include flex-center-center;
+    &:hover {
+      opacity: 1;
+    }
+    &_left {
+      right: 200px;
+    }
+  }
+  &-main {
+    margin-bottom: 10px;
+  }
+  &-page {
+    height: 40px;
+    @include flex-end-center;
+  }
+}

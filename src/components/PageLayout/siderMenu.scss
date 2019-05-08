@@ -1,0 +1,11 @@
+.sider {
+  &-link {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    color: #fff;
+    // @include flex-start-center;
+    @include text-hide;
+  }
+}
