@@ -1,9 +1,9 @@
 # 基于 element-ui 的后台管理系统
 
 ## 灵感来自
- 
+
 [PanJiaChen/vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)
-[vue-element-admin作者在最新的文章也提及到Object.freeze和函数式组件了,可以去学习一波](https://juejin.im/post/5c92ff94f265da6128275a85?utm_source=gold_browser_extension#heading-22)。
+[(vue-element-admin 作者在最新的文章也提及到 Object.freeze 和函数式组件了,可以去学习一波)](https://juejin.im/post/5c92ff94f265da6128275a85?utm_source=gold_browser_extension#heading-22)。
 
 [sendya/ant-design-pro-vue](https://github.com/sendya/ant-design-pro-vue)
 
