@@ -2,11 +2,8 @@
   <div class="layout">
     <Sider class="layout-sider" ref="layoutSide"></Sider>
     <Header class="layout-header" :style="computedAbsoluteStyle"></Header>
-    <div class="layout-tabs" :style="computedAbsoluteStyle">
-      <Tabs></Tabs>
-    </div>
     <div class="layout-content" :style="computedAbsoluteStyle">
-      <el-scrollbar wrap-class="layout-content-main" view-style="padding:20px;">
+      <el-scrollbar wrap-class="layout-content-main">
         <keep-alive :include="cacheRouters">
           <router-view></router-view>
         </keep-alive>
@@ -19,15 +16,13 @@
 import Sider from './sider';
 import Header from './header';
 import Footer from './footer';
-import Tabs from '@/components/Tabs';
 import { mapGetters } from 'vuex';
 export default {
   name: 'BaseLayout',
   components: {
     Sider,
     Header,
-    Footer,
-    Tabs
+    Footer
   },
   data () {
     return {
@@ -103,15 +98,15 @@ export default {
     position: absolute;
     top: 95px;
     left: 200px;
-    bottom: 44px;
+    bottom: 45px;
     right: 0;
     background: #fff;
-    padding-bottom: 10px;
+    padding: 20px;
     .el-scrollbar {
       height: 100%;
-      &__wrap {
-        overflow-x: hidden;
-      }
+    }
+    /deep/.el-scrollbar__wrap {
+      overflow-x: hidden;
     }
   }
   &-footer {

@@ -14,6 +14,8 @@ export default {
   padding: 10px 50px !important;
   @include flex-center-center;
   color: #333;
-  background: #fff;
+  background: #f0f2f5;
+  height: 45px;
+  border: 0;
 }
 </style>

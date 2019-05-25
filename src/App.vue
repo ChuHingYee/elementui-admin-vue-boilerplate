@@ -1,8 +1,5 @@
 <template>
-  <div
-    @click="handleCloseMenu"
-    id="app"
-  >
+  <div @click="handleCloseMenu" id="app">
     <router-view></router-view>
   </div>
 </template>
@@ -14,19 +11,13 @@ import debounce from 'lodash.debounce';
 export default {
   name: 'App',
   data () {
-    return {
-    };
+    return {};
   },
-  components: {
-  },
+  components: {},
   computed: {
-    ...mapGetters([
-      'isTabsMenuShow',
-      'isAutocompleteShow'
-    ])
+    ...mapGetters(['isTabsMenuShow', 'isAutocompleteShow'])
   },
-  watch: {
-  },
+  watch: {},
   methods: {
     ...mapActions([
       'SetTabsMenuType',
@@ -65,5 +56,6 @@ export default {
 #app {
   height: 100%;
   min-height: 100vh;
+  background: #1a355b;
 }
 </style>

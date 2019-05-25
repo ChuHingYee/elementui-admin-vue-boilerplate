@@ -1,5 +1,5 @@
 <template>
-  <aside class="aside" :width="asideWidth">
+  <aside class="aside" :style="{width:asideWidth}">
     <div class="aside-logo"/>
     <el-scrollbar wrap-class="aside-scroll">
       <SubMenu :menus="roleRouters" :isSiderCollapsed="isSiderCollapsed"></SubMenu>
@@ -34,13 +34,13 @@ export default {
   z-index: 1888;
   background: #1a355b;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  &-scroll {
-    max-height: calc(100vh - 47px);
-  }
   &-logo {
     height: 30px;
     background: rgba(255, 255, 255, 0.2);
     margin: 16px;
+  }
+  /deep/.el-scrollbar__wrap {
+    max-height: calc(100vh - 62px);
   }
   .el-scrollbar__bar.is-horizontal {
     display: none !important;

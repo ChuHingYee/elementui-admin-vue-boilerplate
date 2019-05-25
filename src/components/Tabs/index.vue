@@ -182,7 +182,7 @@ export default {
     border: 1px solid #091a32;
     border-bottom: 0;
     border-radius: 4px 4px 0 0;
-    background: #091a32;
+    background: #63758f;
     color: #fff;
     padding: 0 8px;
     user-select: none;
@@ -224,7 +224,7 @@ export default {
     }
 
     &:hover {
-      color: $--color-primary;
+      color: #333;
     }
   }
   &-active {
