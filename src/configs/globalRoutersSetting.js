@@ -1,4 +1,5 @@
-import BaseLayout from '@/components/PageLayout/layout';
+import BaseLayout from '@/layout/Base';
+import LoginLayout from '@/layout/Login';
 
 /**
  * 公共路由
@@ -12,8 +13,19 @@ export const constantRouterMap = [
       hiddenChild: true,
       title: '登陆'
     },
-    component: () =>
-      import(/* webpackChunkName: "home" */ '@/views/Login/Login/index.vue')
+    component: LoginLayout,
+    children: [
+      {
+        path: '',
+        component: () =>
+          import(/* webpackChunkName: "login" */ '@/views/Login/Login/index')
+      },
+      {
+        path: 'reg',
+        component: () =>
+          import(/* webpackChunkName: "login" */ '@/views/Login/Reg/index')
+      }
+    ]
   },
   {
     path: '/redirect',
@@ -76,7 +88,9 @@ export const asyncRouterMap = [
       {
         path: 'simple',
         component: () =>
-          import(/* webpackChunkName: "form" */ '@/views/Form/Simple/index.vue'),
+          import(
+            /* webpackChunkName: "form" */ '@/views/Form/Simple/index.vue'
+          ),
         name: 'FormSimple',
         meta: {
           icon: 'icon-ad',
@@ -102,7 +116,9 @@ export const asyncRouterMap = [
       {
         path: 'simple',
         component: () =>
-          import(/* webpackChunkName: "products" */ '@/views/Table/Simple/index.vue'),
+          import(
+            /* webpackChunkName: "products" */ '@/views/Table/Simple/index.vue'
+          ),
         name: 'TableSimple',
         meta: {
           icon: 'icon-ad',
@@ -127,7 +143,9 @@ export const asyncRouterMap = [
       {
         path: 'relevance',
         component: () =>
-          import(/* webpackChunkName: "tree" */ '@/views/Tree/Relevance/index.vue'),
+          import(
+            /* webpackChunkName: "tree" */ '@/views/Tree/Relevance/index.vue'
+          ),
         name: 'TreeRelevance',
         meta: {
           icon: 'icon-ad',
@@ -139,7 +157,9 @@ export const asyncRouterMap = [
       {
         path: 'router',
         component: () =>
-          import(/* webpackChunkName: "tree" */ '@/views/Tree/Router/index.vue'),
+          import(
+            /* webpackChunkName: "tree" */ '@/views/Tree/Router/index.vue'
+          ),
         name: 'TreeRouter',
         meta: {
           icon: 'icon-ad',
@@ -164,7 +184,9 @@ export const asyncRouterMap = [
       {
         path: 'detail',
         component: () =>
-          import(/* webpackChunkName: "acticle" */ '@/views/Article/Detail/index.vue'),
+          import(
+            /* webpackChunkName: "acticle" */ '@/views/Article/Detail/index.vue'
+          ),
         name: 'ArticleDetail',
         meta: {
           icon: 'icon-ad',
@@ -547,7 +569,9 @@ export const exceptionRoutersMap = [
       {
         path: '403',
         component: () =>
-          import(/* webpackChunkName: "home" */ '@/views/Exception/403/index.vue'),
+          import(
+            /* webpackChunkName: "home" */ '@/views/Exception/403/index.vue'
+          ),
         name: '403Page',
         meta: {}
       }

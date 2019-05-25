@@ -11,12 +11,12 @@
       <router-link
         class="tabs-item"
         tag="div"
-        :class="currentRoute.name===route.name?'tabs-item-active':''"
+        :class="currentRoute.name===route.name?'tabs-active':''"
         :to="{name:route.name,query:route.query}"
         @contextmenu.prevent.native="handleOpenMenu(route,$event)"
       >
-        <span class="item-txt">{{route.routerName }}</span>
-        <i class="el-icon-close item-icon" @click.stop="handleCloseTab(route)"></i>
+        <span class="tabs-item__txt">{{route.routerName }}</span>
+        <i class="el-icon-close tabs-item__icon" @click.stop="handleCloseTab(route)"></i>
       </router-link>
     </el-tooltip>
     <ul class="contextmenu" v-show="isTabsMenuShow" :style="menuStyles">
@@ -49,14 +49,11 @@ export default {
     };
   },
   components: {},
-  props: {
-  },
+  props: {},
   watch: {
     visitedRoutes: {
       immediate: true,
-      handler: function (val) {
-
-      }
+      handler: function (val) {}
     },
     $route: {
       handler: function () {
@@ -118,9 +115,11 @@ export default {
             path: '/'
           });
         } else {
+          const nameIndex =
+            this.currentTabIndex !== 0 ? this.currentTabIndex - 1 : 0;
           // 判断是否第一个，是的话当前路由应为0
           this.$router.push({
-            name: this.visitedRoutes[this.currentTabIndex !== 0 ? this.currentTabIndex - 1 : 0].name
+            name: this.visitedRoutes[nameIndex].name
           });
         }
       }
@@ -162,30 +161,29 @@ export default {
       }
     }
   },
-  mounted () {
-  }
+  mounted () {}
 };
 </script>
 
 <style lang="scss" scope>
 .tabs {
   width: 100%;
-  height: 32px;
-  border-bottom: 1px solid #e8e8e8;
+  height: 35px;
   outline: none;
   position: relative;
-  background: #f0f2f5;
+  background: #1a355b;
   flex: 1;
   @include flex-start-center;
   display: flex;
   &-item {
-    height: 33px;
+    height: 100%;
     cursor: pointer;
     text-decoration: none;
-    border: 1px solid #e8e8e8;
+    border: 1px solid #091a32;
+    border-bottom: 0;
     border-radius: 4px 4px 0 0;
-    background: #fafafa;
-    margin-right: 2px;
+    background: #091a32;
+    color: #fff;
     padding: 0 8px;
     user-select: none;
     font-size: 13px;
@@ -197,14 +195,14 @@ export default {
     transition: all 0.2s;
     &:hover {
       flex-shrink: 0;
-      .item-txt {
+      .tabs-item__txt {
         flex-shrink: 0;
       }
-      .item-icon {
+      .tabs-item__icon {
         flex-shrink: 0;
       }
     }
-    .item-txt {
+    &__txt {
       display: flex;
       flex-shrink: 1;
       flex-wrap: nowrap;
@@ -213,7 +211,7 @@ export default {
       white-space: nowrap;
       line-height: 31px;
     }
-    .item-icon {
+    &__icon {
       color: rgba(0, 0, 0, 0.45);
       transition: all 0.3s;
       font-size: 12px;
@@ -224,24 +222,23 @@ export default {
         color: rgba(0, 0, 0, 0.85);
       }
     }
-    &-active {
-      background: #fff;
-      border-color: #e8e8e8;
-      color: $--color-primary;
-      border-bottom: 1px solid #fff;
-      height: 35px;
-      flex-shrink: 0;
-      .item-txt {
-        flex-shrink: 0;
-        line-height: 33px;
-      }
-      .item-icon {
-        flex-shrink: 0;
-        line-height: 33px;
-      }
-    }
+
     &:hover {
       color: $--color-primary;
+    }
+  }
+  &-active {
+    background: #fff;
+    border-color: #fff;
+    color: #091a32;
+    flex-shrink: 0;
+    .tabs-item__txt {
+      flex-shrink: 0;
+      line-height: 33px;
+    }
+    .tabs-item__icon {
+      flex-shrink: 0;
+      line-height: 33px;
     }
   }
   .contextmenu {

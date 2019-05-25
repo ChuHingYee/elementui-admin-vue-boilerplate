@@ -4,11 +4,11 @@
 
 <script>
 export default {
-  name: 'GlobalLayoutFooter'
+  name: 'BaseLayoutFooter'
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .footer {
   @include transition-common;
   padding: 10px 50px !important;

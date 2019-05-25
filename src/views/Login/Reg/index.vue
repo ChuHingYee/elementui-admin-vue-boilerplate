@@ -34,24 +34,21 @@
           v-debounce:300="handleSubmit"
           :loading="loading"
           :disabled="isDisabled"
-        >登 录</el-button>
-      </el-form-item>
-      <el-form-item class="login-form__item">
-        <el-checkbox v-model="form.rememberMe">记住密码</el-checkbox>
+        >注 册</el-button>
       </el-form-item>
     </el-form>
     <div class="login-nav">
-      <router-link :to="{path:'/login/reg'}" class="login-nav__link">注册</router-link>
+      <router-link :to="{path:'/login'}" class="login-nav__link">使用已有账号登录</router-link>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { RegSevice } from '@/apis/app';
 import { checkLoginNumber } from '@/utils/validators';
 
 export default {
-  name: 'Login',
+  name: 'Reg',
   data () {
     return {
       loading: false,
@@ -74,7 +71,6 @@ export default {
   },
   created () {},
   methods: {
-    ...mapActions(['Login']),
     triggerPWCanSee () {
       this.isShowPw = !this.isShowPw;
     },
@@ -86,9 +82,9 @@ export default {
         if (valid) {
           this.loading = true;
           const loginParams = { ...this.form };
-          this.Login(loginParams)
+          RegSevice(loginParams)
             .then(res => {
-              this.loginSuccess(res);
+              this.RegSuccess(res);
               this.isDisabled = true;
             })
             .catch(err => this.requestFailed(err))
@@ -101,21 +97,22 @@ export default {
         }
       });
     },
-    loginSuccess (res) {
+    RegSuccess (res) {
+      this.$message({
+        message: `注册成功`,
+        type: 'success',
+        duration: 5 * 1000
+      });
       this.$router.push({
-        path: '/'
+        path: '/login'
       });
     },
     requestFailed (err) {
       console.log(err);
     }
   },
-  mounted () {
-    document.body.classList.add('userLayout');
-  },
-  beforeDestroy () {
-    document.body.classList.remove('userLayout');
-  }
+  mounted () {},
+  beforeDestroy () {}
 };
 </script>
 

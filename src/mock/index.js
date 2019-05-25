@@ -29,6 +29,7 @@ Mock.mock(/(.*?)\/table\/select/, 'post', tableAPI.select);
 Mock.mock(/(.*?)\/router\/list/, 'post', routerAPI.getTree);
 
 // user
+Mock.mock(/(.*?)\/user\/reg/, 'post', userAPI.reg);
 Mock.mock(/(.*?)\/user\/login/, 'post', userAPI.login);
 Mock.mock(/(.*?)\/user\/logout/, 'post', userAPI.logout);
 Mock.mock(/(.*?)\/user\/routes/, 'post', userAPI.routes);

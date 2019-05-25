@@ -243,6 +243,22 @@ const user = Mock.mock({
   ava: Mock.Random.image('200x100', color)
 });
 export default {
+  reg: config => {
+    const flag = Mock.Random.boolean(0.9, 0.4, true);
+    if (flag) {
+      return {
+        success: flag,
+        message: '注册成功'
+      };
+    } else {
+      return {
+        success: flag,
+        data: {
+          message: '注册失败'
+        }
+      };
+    }
+  },
   login: config => {
     const flag = Mock.Random.boolean(0.9, 0.4, true);
     if (flag) {

@@ -1,5 +1,13 @@
 import fetch from '@/utils/request';
 
+export const RegSevice = data => {
+  return fetch({
+    url: '/user/reg',
+    method: 'post',
+    data: data
+  });
+};
+
 export const LoginSevice = data => {
   return fetch({
     url: '/user/login',

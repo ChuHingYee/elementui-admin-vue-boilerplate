@@ -42,7 +42,7 @@ const err = error => {
 };
 
 // 白名单接口地址
-const whitelist = ['/user/login', '/user/logout'];
+const whitelist = ['/user/reg', '/user/login', '/user/logout'];
 
 service.interceptors.request.use(config => {
   config.headers['Content-Type'] = 'application/json;charset=utf-8';

@@ -13,7 +13,7 @@ NProgress.configure({
 });
 
 // no redirect whitelist
-const whiteList = ['/login'];
+const whiteList = ['/login', '/login/reg'];
 
 router.beforeEach(async (to, from, next) => {
   // start progress bar

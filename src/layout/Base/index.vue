@@ -8,7 +8,7 @@
     <div class="layout-content" :style="computedAbsoluteStyle">
       <el-scrollbar wrap-class="layout-content-main" view-style="padding:20px;">
         <keep-alive :include="cacheRouters">
-          <router-view @scroll-top="handlePageScroll"></router-view>
+          <router-view></router-view>
         </keep-alive>
       </el-scrollbar>
     </div>
@@ -22,7 +22,7 @@ import Footer from './footer';
 import Tabs from '@/components/Tabs';
 import { mapGetters } from 'vuex';
 export default {
-  name: 'GlobalLayout',
+  name: 'BaseLayout',
   components: {
     Sider,
     Header,
@@ -73,20 +73,12 @@ export default {
     },
     handleSelecedRowChange (rows) {
       console.log(rows);
-    },
-    handlePageScroll () {
-      // this.$refs.layoutContainer.$el.scrollIntoView();
     }
   },
-  mounted () {
-    this.isTableLoading = true;
-    setTimeout(() => {
-      this.isTableLoading = false;
-    }, 3000);
-  }
+  mounted () {}
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .layout {
   height: 100%;
   flex-direction: column;
@@ -100,32 +92,26 @@ export default {
   }
   &-tabs {
     position: fixed;
-    top: 64px;
+    top: 60px;
     right: 0;
     z-index: 88;
-    padding: 10px 22px 0;
     background: #f0f2f5;
     @include transition-common;
   }
   &-content {
     transition: all 0.2s;
     position: absolute;
-    top: 106px;
+    top: 95px;
     left: 200px;
     bottom: 44px;
     right: 0;
-    background: #f0f2f5;
-    padding: 0 22px 10px;
+    background: #fff;
+    padding-bottom: 10px;
     .el-scrollbar {
       height: 100%;
       &__wrap {
         overflow-x: hidden;
       }
-    }
-    &-main {
-      background: #fff;
-      border: 1px solid #e8e8e8;
-      border-top: 0;
     }
   }
   &-footer {
@@ -134,11 +120,5 @@ export default {
     right: 0;
     left: 0;
   }
-}
-
-.layout .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
 }
 </style>
