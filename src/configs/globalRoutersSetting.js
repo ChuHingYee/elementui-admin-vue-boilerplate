@@ -219,6 +219,18 @@ export const asyncRouterMap = [
           auth: [],
           isRoute: true
         }
+      },
+      {
+        path: 'two',
+        component: () =>
+          import(/* webpackChunkName: "Chart" */ '@/views/Chart/Two/index.vue'),
+        name: 'ChartTwo',
+        meta: {
+          icon: 'icon-ad',
+          title: '图表2',
+          auth: [],
+          isRoute: true
+        }
       }
     ]
   },

@@ -131,6 +131,8 @@ export default {
       this.key = '';
       this.SetIsAutocompleteShow(false);
     }
+  },
+  mounted () {
   }
 };
 </script>
@@ -163,12 +165,12 @@ export default {
             border-radius: 0;
             padding: 0;
           }
-          &__active {
-            width: 150px;
-            /deep/ .el-input__inner {
-              padding: 0 15px;
-              background: #1a355b;
-            }
+        }
+        &__active {
+          width: 150px;
+          /deep/ .el-input__inner {
+            padding: 0 15px;
+            background: #1a355b;
           }
         }
       }

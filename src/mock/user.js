@@ -229,6 +229,11 @@ const routes = [
         name: '图表1',
         uniName: 'ChartOne',
         type: 0
+      },
+      {
+        name: '图表2',
+        uniName: 'ChartTwo',
+        type: 0
       }
     ]
   }

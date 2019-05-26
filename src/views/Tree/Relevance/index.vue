@@ -1,9 +1,6 @@
 <template>
   <el-row id="userList">
-    <el-col
-      :span="12"
-      class="tree"
-    >
+    <el-col :span="12" class="tree">
       <h2 class="page-title tree-title">分布树</h2>
       <el-tree
         :style="computedHeight"
@@ -14,22 +11,14 @@
         @node-click="handleNodeClick"
         :render-content="renderTree"
         :expand-on-click-node="false"
+        v-loading="isLoading"
       ></el-tree>
     </el-col>
-    <el-col
-      :span="12"
-      class="info"
-    >
+    <el-col :span="12" class="info">
       <h2 class="page-title info-title">信息</h2>
-      <Skeleton
-        :paragraph="[3,5,6,8,9]"
-        :loading="!currentItem._id"
-      >
+      <Skeleton :paragraph="[3,5,6,8,9]" :loading="!currentItem._id">
         <div class="info-container">
-          <img
-            :src="currentItem.ava"
-            class="info-container-ava"
-          >
+          <img :src="currentItem.ava" class="info-container-ava">
           <el-row class="info-container-main">
             <el-col :span="12">
               <p>
@@ -83,7 +72,8 @@ export default {
         label: 'name',
         children: 'children',
         isLeaf: 'leaf'
-      }
+      },
+      isLoading: false
     };
   },
   components: {
@@ -104,13 +94,11 @@ export default {
     },
     async loadNode (node, resolve) {
       const { data } = node;
-
       const result = await this.getTreeData(data && data._id ? data._id : '');
-      console.log(result);
       return resolve(result);
     },
     formatData (list) {
-      return list.map((item) => {
+      return list.map(item => {
         return {
           title: item.name,
           _id: item._id,
@@ -127,26 +115,35 @@ export default {
       });
     },
     getTreeData (id) {
+      this.isLoading = true;
       return new Promise((resolve, reject) => {
         GetTreeList({
           id
-        }).then((res) => {
-          resolve(this.formatData(res.list));
-        });
+        })
+          .then(res => {
+            resolve(this.formatData(res.list));
+          })
+          .finally(() => {
+            this.isLoading = false;
+          });
       });
     },
     renderTree (h, { node, data, store }) {
       return (
-        <div class={this.currentItem._id === data._id ? 'tree-item tree-item-current' : 'tree-item'}>
+        <div
+          class={
+            this.currentItem._id === data._id
+              ? 'tree-item tree-item-current'
+              : 'tree-item'
+          }
+        >
           <span>{data.name}</span>
           <span>(朋友数量{data.childCount})</span>
-        </div >
+        </div>
       );
     }
   },
-  mounted () {
-    console.log('router mounted');
-  }
+  mounted () {}
 };
 </script>
 
