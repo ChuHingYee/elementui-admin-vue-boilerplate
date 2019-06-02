@@ -32,7 +32,6 @@ export default {
   computed: {
     ...mapGetters([
       'isSiderCollapsed',
-      'scrollBarWitdh',
       'cacheRouters',
       'clientHeight',
       'resizeFlag'

@@ -4,7 +4,6 @@ const app = {
   state: {
     isSiderCollapsed: false,
     isAutocompleteShow: false,
-    scrollBarWitdh: 0,
     resizeFlag: 0,
     clientWidth: 0,
     clientHeight: 0
@@ -17,9 +16,6 @@ const app = {
     SET_ISAUTOCOMPLETESHOW (state, type) {
       state.isAutocompleteShow = type;
     },
-    SET_SCROLLBAR_WIDTH (state, witdh) {
-      state.scrollBarWitdh = witdh;
-    },
     TRIGGER_RESIZE: state => {
       state.resizeFlag = state.resizeFlag + 1;
     },
@@ -31,9 +27,6 @@ const app = {
   actions: {
     SetSiderType ({ commit }, type) {
       commit('SET_SIDER_TYPE', type);
-    },
-    SetScrollBarWitdh ({ commit }, witdh) {
-      commit('SET_SCROLLBAR_WIDTH', witdh);
     },
     GetClientAttr ({ commit }) {
       const w =

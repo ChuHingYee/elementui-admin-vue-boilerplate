@@ -42,7 +42,7 @@ export default {
   /deep/.el-scrollbar__wrap {
     max-height: calc(100vh - 62px);
   }
-  .el-scrollbar__bar.is-horizontal {
+  /deep/.el-scrollbar__bar.is-horizontal {
     display: none !important;
   }
 }

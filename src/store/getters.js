@@ -1,7 +1,6 @@
 const getters = {
   // app
   isSiderCollapsed: state => state.app.isSiderCollapsed,
-  scrollBarWitdh: state => state.app.scrollBarWitdh,
   resizeFlag: state => state.app.resizeFlag,
   clientWidth: state => state.app.clientWidth,
   clientHeight: state => state.app.clientHeight,

@@ -123,10 +123,8 @@ export default {
     };
   },
   mixins: [customTableMixin, custom2ExcelMixin],
-  computed: {
-  },
-  watch: {
-  },
+  computed: {},
+  watch: {},
   components: {
     Table,
     Dialog
@@ -140,11 +138,14 @@ export default {
     },
     loadData (parameter) {
       return new Promise((resolve, reject) => {
-        GetTableList(parameter).then((res) => {
-          resolve(res);
-        }, err => {
-          reject(err);
-        });
+        GetTableList(parameter).then(
+          res => {
+            resolve(res);
+          },
+          err => {
+            reject(err);
+          }
+        );
       });
     },
     handleClick () {
@@ -167,9 +168,7 @@ export default {
       this.$refs.table.reloadWithQuery(_params, true);
     }
   },
-  mounted () {
-  }
-
+  mounted () {}
 };
 </script>
 

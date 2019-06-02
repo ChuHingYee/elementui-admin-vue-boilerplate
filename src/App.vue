@@ -6,7 +6,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { getUserAgent, getScrollBarWidth } from '@/utils/tools';
 import debounce from 'lodash.debounce';
 export default {
   name: 'App',
@@ -21,7 +20,6 @@ export default {
   methods: {
     ...mapActions([
       'SetTabsMenuType',
-      'SetScrollBarWitdh',
       'SetSiderType',
       'GetClientAttr',
       'SetIsAutocompleteShow'
@@ -36,16 +34,6 @@ export default {
     }
   },
   mounted () {
-    // 获取浏览器滚动条宽度
-    const userAgentName = getUserAgent();
-    let scrollBarWidth = this.$ls.get(userAgentName);
-    if (!scrollBarWidth) {
-      scrollBarWidth = getScrollBarWidth();
-      this.$ls.set(userAgentName, scrollBarWidth);
-      this.SetScrollBarWitdh(scrollBarWidth);
-    } else {
-      this.SetScrollBarWitdh(scrollBarWidth);
-    }
     this.GetClientAttr();
     window.addEventListener('resize', debounce(this.GetClientAttr, 300));
   }

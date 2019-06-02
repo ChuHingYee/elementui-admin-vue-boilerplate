@@ -27,7 +27,6 @@ function filterRouters (asyncRouters, routers, routersArr) {
             routersArr
           );
           router.children = routerChildren;
-          asyncRouters.splice(index, 1);
         } else if (arouter.children[0].type === 1) {
           router.meta.auth = arouter.children;
         }
@@ -101,13 +100,11 @@ const permission = {
         GetRoutes(data).then(
           res => {
             const roleRoutersArr = [];
-            console.time();
             let endRouters = filterRouters(
               res.routes,
               asyncRouterMap,
               roleRoutersArr
             );
-            console.timeEnd();
             endRouters = endRouters.concat(exceptionRoutersMap);
             if (endRouters.length > 0) {
               commit('SET_ROUTERS', {
