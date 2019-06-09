@@ -1,54 +1,51 @@
 <template>
   <header class="header">
-    <div class="header-panel">
-      <i
-        class="iconfont"
-        :class="isSiderCollapsed?'icon-menu-fold':'icon-menu-fold1'"
-        @click="trggleSiderType"
-      ></i>
-      <div class="header-panel__menu">
-        <div class="menu-search" @click.stop="SetIsAutocompleteShow(true)">
-          <el-tooltip effect="dark" content="站内搜索" placement="bottom">
-            <i class="iconfont icon-search menu-search__icon"></i>
-          </el-tooltip>
-          <el-autocomplete
-            class="menu-search__input"
-            :class="isAutocompleteShow?'menu-search__active':''"
-            v-model="key"
-            :fetch-suggestions="querySearch"
-            placeholder="页面搜索"
-            :trigger-on-focus="false"
-            @select="handleSelectRoute"
-          ></el-autocomplete>
-        </div>
-
-        <el-dropdown>
-          <div class="menu-info">
-            <img :src="userInfo.ava" v-if="userInfo.ava" class="menu-info__ava">
-            <img src v-else>
-            <span>{{userInfo.name}}</span>
-          </div>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item @click.native="handleClick">
-              <i class="el-icon-time"></i>
-              <span>修改密码</span>
-            </el-dropdown-item>
-            <el-dropdown-item divided @click.native="handleLogout">
-              <i class="el-icon-time"></i>
-              <span>退出登录</span>
-            </el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
+    <i
+      class="iconfont header-trigger"
+      :class="isSiderCollapsed?'icon-menu-fold':'icon-menu-fold1'"
+      @click="trggleSiderType"
+    ></i>
+    <div class="header-menu">
+      <!-- 搜索栏 -->
+      <div class="header-menu__search" @click.stop="SetIsAutocompleteShow(true)">
+        <el-tooltip effect="dark" content="站内搜索" placement="bottom">
+          <i class="iconfont icon-search search-icon"></i>
+        </el-tooltip>
+        <el-autocomplete
+          class="search-input"
+          :class="isAutocompleteShow?'search-input__active':''"
+          v-model="key"
+          :fetch-suggestions="querySearch"
+          placeholder="页面搜索"
+          :trigger-on-focus="false"
+          @select="handleSelectRoute"
+        ></el-autocomplete>
       </div>
+      <!-- 个人资料 -->
+      <el-dropdown>
+        <div class="header-menu__info">
+          <img :src="userInfo.ava" v-if="userInfo.ava" class="info-ava">
+          <img src v-else>
+          <span>{{userInfo.name}}</span>
+        </div>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item @click.native="handleClick">
+            <i class="el-icon-time"></i>
+            <span>修改密码</span>
+          </el-dropdown-item>
+          <el-dropdown-item divided @click.native="handleLogout">
+            <i class="el-icon-time"></i>
+            <span>退出登录</span>
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
     </div>
-    <Tabs></Tabs>
     <Dialog :show.sync="isShowDialog"></Dialog>
   </header>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import Tabs from '@/components/Tabs';
 import Dialog from './components/Dialog';
 
 export default {
@@ -60,8 +57,7 @@ export default {
     };
   },
   components: {
-    Dialog,
-    Tabs
+    Dialog
   },
   computed: {
     ...mapGetters([
@@ -132,59 +128,55 @@ export default {
       this.SetIsAutocompleteShow(false);
     }
   },
-  mounted () {
-  }
+  mounted () {}
 };
 </script>
 
 <style lang="scss" scoped>
 .header {
-  color: #fff;
-  background: #1a355b;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
   flex-wrap: wrap;
-  &-panel {
-    width: 100%;
-    height: 60px;
-    @include flex-between-center;
-    padding: 0 0 0 20px;
-    &__menu {
-      @include flex-end-center;
-      .menu-search {
-        padding: 0 12px;
-        @include flex-start-center;
-        &__icon {
-          padding-right: 8px;
-        }
-        &__input {
-          transition: width 0.3s, margin-left 0.3s;
-          width: 0px;
-          /deep/ .el-input__inner {
-            border: 0;
-            border-bottom: 1px solid #dcdfe6;
-            border-radius: 0;
-            padding: 0;
-          }
+  background: #fff;
+  height: 60px;
+  @include flex-between-center;
+  padding: 0 0 0 20px;
+  &-trigger {
+    font-size: 18px;
+  }
+  &-menu {
+    @include flex-end-center;
+    &__search {
+      padding: 0 12px;
+      @include flex-start-center;
+      .search-icon {
+        padding-right: 8px;
+      }
+      .search-input {
+        transition: width 0.3s, margin-left 0.3s;
+        width: 0px;
+        /deep/ .el-input__inner {
+          border: 0;
+          border-bottom: 1px solid #dcdfe6;
+          border-radius: 0;
+          padding: 0;
         }
         &__active {
           width: 150px;
           /deep/ .el-input__inner {
             padding: 0 15px;
-            background: #1a355b;
           }
         }
       }
-      .menu-info {
-        padding: 0 12px;
-        @include flex-center-center;
-        cursor: pointer;
-        color: #fff;
-        .menu-info__ava {
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          margin-right: 12px;
-        }
+    }
+    &__info {
+      padding: 0 12px;
+      @include flex-center-center;
+      cursor: pointer;
+      .info-ava {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        margin-right: 12px;
       }
     }
   }

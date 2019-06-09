@@ -79,132 +79,14 @@ const routes = [
       {
         name: 'A',
         uniName: 'MockA',
-        type: 0
-      },
-      {
-        name: 'B',
-        uniName: 'MockB',
-        type: 0
-      },
-      {
-        name: 'C',
-        uniName: 'MockC',
-        type: 0
-      },
-      {
-        name: 'D',
-        uniName: 'MockD',
-        type: 0
-      },
-      {
-        name: 'E',
-        uniName: 'MockE',
-        type: 0
-      },
-      {
-        name: 'F',
-        uniName: 'MockF',
-        type: 0
-      },
-      {
-        name: 'G',
-        uniName: 'MockG',
-        type: 0
-      },
-      {
-        name: 'H',
-        uniName: 'MockH',
-        type: 0
-      },
-      {
-        name: 'I',
-        uniName: 'MockI',
-        type: 0
-      },
-      {
-        name: 'J',
-        uniName: 'MockJ',
-        type: 0
-      },
-      {
-        name: 'K',
-        uniName: 'MockK',
-        type: 0
-      },
-      {
-        name: 'L',
-        uniName: 'MockL',
-        type: 0
-      },
-      {
-        name: 'M',
-        uniName: 'MockM',
-        type: 0
-      },
-      {
-        name: 'N',
-        uniName: 'MockN',
-        type: 0
-      },
-      {
-        name: 'O',
-        uniName: 'MockO',
-        type: 0
-      },
-      {
-        name: 'P',
-        uniName: 'MockP',
-        type: 0
-      },
-      {
-        name: 'Q',
-        uniName: 'MockQ',
-        type: 0
-      },
-      {
-        name: 'R',
-        uniName: 'MockR',
-        type: 0
-      },
-      {
-        name: 'S',
-        uniName: 'MockS',
-        type: 0
-      },
-      {
-        name: 'T',
-        uniName: 'MockT',
-        type: 0
-      },
-      {
-        name: 'U',
-        uniName: 'MockU',
-        type: 0
-      },
-      {
-        name: 'V',
-        uniName: 'MockV',
-        type: 0
-      },
-      {
-        name: 'W',
-        uniName: 'MockW',
-        type: 0
-      },
-      {
-        name: 'X',
-        uniName: 'MockX',
-        type: 0
-      },
-      {
-        name: 'Y',
-        uniName: 'MockY',
-        type: 0
-      },
-      {
-        name: 'Z',
-        uniName: 'MockZ',
-        type: 0
+        type: 0,
+        children: [
+          {
+            name: 'A1',
+            uniName: 'MockA1',
+            type: 0
+          }
+        ]
       }
     ]
   },

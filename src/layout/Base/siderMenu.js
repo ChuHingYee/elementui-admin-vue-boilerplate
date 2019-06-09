@@ -18,30 +18,25 @@ export default {
       if (menu.meta.hidden) {
         return;
       }
-      const _path = `${path}${path ? '/' : ''}${menu.path}`;
       if (!menu.children || menu.meta.hiddenChild) {
         return (
-          <el-menu-item index={_path}>
-            <router-link
-              to={{ path: _path }}
-              class="sider-link"
-              exact
-            >
-              {menu.meta.icon && <i class={`iconfont ${menu.meta.icon}`} />}
-              <span>{menu.meta.title}</span>
-            </router-link>
-            <span slot="title">{menu.meta.title}</span>
+          <el-menu-item
+            index={menu.meta.realPath}
+            route={{ path: menu.meta.realPath }}
+          >
+            {menu.meta.icon && <i class={`iconfont ${menu.meta.icon}`} />}
+            <span slot='title'>{menu.meta.title}</span>
           </el-menu-item>
         );
       } else {
         return (
-          <el-submenu index={_path}>
-            <template slot="title">
+          <el-submenu index={menu.meta.realPath} popper-class='sider-menu'>
+            <template slot='title'>
               {menu.meta.icon && <i class={`iconfont ${menu.meta.icon}`} />}
               <span>{menu.meta.title}</span>
             </template>
             {menu.children.map(child => {
-              return this.renderItem(h, child, _path);
+              return this.renderItem(h, child, menu.meta.realPath);
             })}
           </el-submenu>
         );
@@ -53,8 +48,12 @@ export default {
       <el-menu
         default-active={this.$route.path}
         unique-opened
-        text-color="#ffffff"
+        text-color='#ffffff'
+        active-text-color='#409EFF'
+        background-color='#001529'
         collapse={this.isSiderCollapsed}
+        router
+        popper-append-to-body={false}
       >
         {this.menus.map(menu => {
           return this.renderItem(h, menu, '');

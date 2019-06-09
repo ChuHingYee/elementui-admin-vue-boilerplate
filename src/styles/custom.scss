@@ -5,62 +5,6 @@
     overflow: hidden; //配合el-scrollbar
 }
 
-.el-menu {
-    border-right: 0;
-
-    .iconfont {
-        margin-right: 8px;
-        color: #fff;
-    }
-
-    .el-menu-item {
-        height: 40px;
-        line-height: 40px;
-        background: #1a355b;
-        @include text-hide;
-        padding: 0 !important;
-        color: #fff;
-
-        .router-link-exact-active {
-            background-color: #05111f;
-            color: #fff !important;
-            background: linear-gradient(90deg,
-                rgba(14, 34, 58, 1) 0%,
-                rgba(5, 17, 31, 1) 100%);
-        }
-
-        * {
-            vertical-align: inherit !important;
-        }
-    }
-
-    .is-active {
-        background-color: #05111f;
-        background: linear-gradient(90deg,
-            rgba(14, 34, 58, 1) 0%,
-            rgba(5, 17, 31, 1) 100%);
-    }
-
-    .el-submenu__title {
-        width: 200px;
-        height: 40px;
-        line-height: 40px;
-        background: #1a355b;
-    }
-
-    .el-submenu {
-        .sider-link {
-            padding: 0 20px;
-        }
-
-        .el-menu-item {
-            height: 40px;
-            line-height: 40px;
-            padding-left: 20px !important;
-        }
-    }
-}
-
 .el-menu--collapse {
     .sider-link {
         padding: 0;

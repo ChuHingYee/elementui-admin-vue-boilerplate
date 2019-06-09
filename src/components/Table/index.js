@@ -19,11 +19,11 @@ export default {
   props: Object.assign({}, Table.props, {
     data: {
       type: Function,
-      default: () => { }
+      default: () => {}
     },
     customPagination: {
       type: Object,
-      default: () => { }
+      default: () => {}
     },
     size: {
       type: String,
@@ -37,9 +37,6 @@ export default {
   watch: {},
 
   methods: {
-    handleClick (row) {
-      console.log(row);
-    },
     handleSelectionChange (row) {
       this.$emit('selection-change', row);
     },
@@ -66,7 +63,7 @@ export default {
       this.localCurrentPage = val;
       this.loadData();
     },
-    handleSizeChange (val) { },
+    handleSizeChange (val) {},
     /**
      * 表格外部筛选方法
      * @param
@@ -110,7 +107,7 @@ export default {
     });
     const CustomTable = (
       <el-table
-        class="table-wrapper-main"
+        class='table-wrapper-main'
         vLoading={this.localLoading}
         {...{ props, scopedSlots: { ...this.$scopedSlots } }}
         on-selection-change={this.handleSelectionChange}
@@ -118,16 +115,16 @@ export default {
       />
     );
     return (
-      <div class="table-wrapper">
+      <div class='table-wrapper'>
         {CustomTable}
-        <div class="table-wrapper-page">
+        <div class='table-wrapper-page'>
           <el-pagination
             on-size-change={this.handleSizeChange}
             on-current-change={this.handleCurrentChange}
             current-page={this.localCurrentPage}
             page-sizes={this.localPageSizesList}
             page-size={this.localPageSize}
-            layout="total, prev, pager, next,jumper"
+            layout='total, prev, pager, next,jumper'
             total={this.localTotalCount}
           />
         </div>

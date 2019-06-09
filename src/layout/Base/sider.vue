@@ -32,8 +32,8 @@ export default {
   left: 0;
   top: 0;
   z-index: 1888;
-  background: #1a355b;
-  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  background: #001529;
+  @include transition-common();
   &-logo {
     height: 30px;
     background: rgba(255, 255, 255, 0.2);
@@ -44,6 +44,13 @@ export default {
   }
   /deep/.el-scrollbar__bar.is-horizontal {
     display: none !important;
+  }
+  /deep/.el-menu {
+    border-right: 0;
+    .iconfont {
+      margin-right: 8px;
+      color: #fff;
+    }
   }
 }
 </style>

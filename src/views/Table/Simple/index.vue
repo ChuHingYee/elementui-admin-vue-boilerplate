@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div ref="tableHeader" class="custom-table-header">
+    <div class="custom-table-header">
       <el-form :inline="true" :model="searchForm">
         <el-form-item label="审批人">
           <el-input
@@ -9,30 +9,6 @@
             size="small"
             v-formatK:2="searchForm.user"
           ></el-input>
-        </el-form-item>
-        <el-form-item label="审批人">
-          <el-input v-model="searchForm.user" placeholder="审批人" size="small"></el-input>
-        </el-form-item>
-        <el-form-item label="审批人">
-          <el-input v-model="searchForm.user" placeholder="审批人" size="small"></el-input>
-        </el-form-item>
-        <el-form-item label="审批人">
-          <el-input v-model="searchForm.user" placeholder="审批人" size="small"></el-input>
-        </el-form-item>
-        <el-form-item label="审批人">
-          <el-input v-model="searchForm.user" placeholder="审批人" size="small"></el-input>
-        </el-form-item>
-        <el-form-item label="审批人">
-          <el-input v-model="searchForm.user" placeholder="审批人" size="small"></el-input>
-        </el-form-item>
-        <el-form-item label="审批人">
-          <el-input v-model="searchForm.user" placeholder="审批人" size="small"></el-input>
-        </el-form-item>
-        <el-form-item label="审批人">
-          <el-input v-model="searchForm.user" placeholder="审批人" size="small"></el-input>
-        </el-form-item>
-        <el-form-item label="审批人">
-          <el-input v-model="searchForm.user" placeholder="审批人" size="small"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" size="small" @click="handleSearch">查询</el-button>
@@ -58,7 +34,6 @@
       :data="loadData"
       @selection-change="handleSelectionChange"
       @sort-change="handleSortChange"
-      :height="tableHeight"
       ref="table"
       id="table"
     >

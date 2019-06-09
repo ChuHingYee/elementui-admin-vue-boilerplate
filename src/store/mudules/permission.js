@@ -13,9 +13,18 @@ import { GetRoutes } from '@/apis/app';
  * @param {所有路由列表} routersArr
  *
  */
-function filterRouters (asyncRouters, routers, routersArr) {
+function filterRouters (
+  asyncRouters,
+  routers,
+  routersArr,
+  path = '',
+  tree = ''
+) {
   return routers.filter(router => {
-    return asyncRouters.some((arouter, index) => {
+    const { meta } = router;
+    const _path = `${path ? path + '/' + router.path : router.path}`;
+    const _tree = `${tree ? tree + '-' + meta.title : meta.title}`;
+    return asyncRouters.some(arouter => {
       if (arouter.hasSet) {
         return false;
       }
@@ -24,7 +33,9 @@ function filterRouters (asyncRouters, routers, routersArr) {
           const routerChildren = filterRouters(
             arouter.children,
             router.children,
-            routersArr
+            routersArr,
+            _path,
+            _tree
           );
           router.children = routerChildren;
         } else if (arouter.children[0].type === 1) {
@@ -39,6 +50,8 @@ function filterRouters (asyncRouters, routers, routersArr) {
             routeName: router.name
           });
         }
+        router.meta.realPath = _path;
+        router.meta.tree = _tree;
         return true;
       }
     });

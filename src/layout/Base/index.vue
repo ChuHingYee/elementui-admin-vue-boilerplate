@@ -1,13 +1,17 @@
 <template>
-  <div class="layout">
+  <div class="layout" :style="computedPaddingStyle">
     <Sider class="layout-sider" ref="layoutSide"></Sider>
     <Header class="layout-header" :style="computedAbsoluteStyle"></Header>
-    <div class="layout-content" :style="computedAbsoluteStyle">
-      <el-scrollbar wrap-class="layout-content-main">
+    <el-breadcrumb separator="/" class="layout-nav" v-if="isShowNav">
+      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item v-for="(nav,index) in currentNav" :key="nav+index">{{nav}}</el-breadcrumb-item>
+    </el-breadcrumb>
+    <div class="layout-content">
+      <div class="layout-content__main">
         <keep-alive :include="cacheRouters">
           <router-view></router-view>
         </keep-alive>
-      </el-scrollbar>
+      </div>
     </div>
     <Footer class="layout-footer" :style="computedAbsoluteStyle"></Footer>
   </div>
@@ -24,58 +28,33 @@ export default {
     Header,
     Footer
   },
-  data () {
-    return {
-      marginRight: 0
-    };
-  },
   computed: {
-    ...mapGetters([
-      'isSiderCollapsed',
-      'cacheRouters',
-      'clientHeight',
-      'resizeFlag'
-    ]),
+    ...mapGetters(['isSiderCollapsed', 'cacheRouters']),
     computedAbsoluteStyle () {
       return {
         left: this.isSiderCollapsed ? '64px' : '200px'
       };
     },
-    computedMarginStyle () {
+    computedPaddingStyle () {
       return {
-        marginLeft: this.isSiderCollapsed ? '64px' : '200px'
+        paddingLeft: this.isSiderCollapsed ? '64px' : '200px'
       };
-    }
-  },
-  watch: {
-    tinymceHtml (val) {
-      console.log(val);
-    }
-  },
-  methods: {
-    handleToggleTableFixed () {
-      const operationColumn = this.columns.find(col => {
-        return col.key === 'operation';
-      });
-      if (operationColumn) {
-        if (operationColumn.fixed) {
-          operationColumn.fixed = false;
-        } else {
-          operationColumn.fixed = 'right';
-        }
-      }
     },
-    handleSelecedRowChange (rows) {
-      console.log(rows);
+    currentNav () {
+      const { tree } = this.$route.meta;
+      return tree.split('-');
+    },
+    isShowNav () {
+      return this.$route.meta.showNav;
     }
-  },
-  mounted () {}
+  }
 };
 </script>
 <style lang="scss" scoped>
 .layout {
   height: 100%;
   flex-direction: column;
+  padding-top: 60px;
   &-header {
     position: fixed;
     top: 0;
@@ -84,35 +63,20 @@ export default {
     transition: all 0.2s;
     z-index: 88;
   }
-  &-tabs {
-    position: fixed;
-    top: 60px;
-    right: 0;
-    z-index: 88;
-    background: #f0f2f5;
-    @include transition-common;
+  &-nav {
+    padding: 0 20px;
+    line-height: 40px;
+    background: #fff;
+    font-size: 13px;
   }
   &-content {
     transition: all 0.2s;
-    position: absolute;
-    top: 95px;
-    left: 200px;
-    bottom: 45px;
-    right: 0;
-    background: #fff;
     padding: 20px;
-    .el-scrollbar {
-      height: 100%;
+    min-height: calc(100vh - 105px);
+    &__main {
+      background: #fff;
+      padding: 20px;
     }
-    /deep/.el-scrollbar__wrap {
-      overflow-x: hidden;
-    }
-  }
-  &-footer {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
   }
 }
 </style>

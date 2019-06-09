@@ -7,7 +7,6 @@ import './utils/filters';
 import './directives';
 import './permission';
 import './styles/reset.scss';
-// import './theme/index.css'; // element-ui custom theme
 import './styles/base.scss';
 
 import './mock/index'; // mockjs
