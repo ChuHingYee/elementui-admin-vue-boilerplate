@@ -5,30 +5,6 @@
     overflow: hidden; //配合el-scrollbar
 }
 
-.el-menu--collapse {
-    .sider-link {
-        padding: 0;
-    }
-}
-
-.el-menu--popup {
-    max-height: 400px;
-    overflow: auto;
-
-    .sider-link {
-        @include flex-start-center;
-    }
-}
-
-.el-menu:not(.el-menu--collapse) {
-    width: 200px;
-    padding: 0;
-
-    &-item {
-        width: 100%;
-    }
-}
-
 //对话框
 .el-dialog {
     border-radius: 4px;

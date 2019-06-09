@@ -53,7 +53,6 @@ export default {
         background-color='#001529'
         collapse={this.isSiderCollapsed}
         router
-        popper-append-to-body={false}
       >
         {this.menus.map(menu => {
           return this.renderItem(h, menu, '');
