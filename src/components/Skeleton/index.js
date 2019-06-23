@@ -21,31 +21,31 @@ export default {
     },
     paragraph: {
       type: Array,
-      default: () => [10, 10, [5, 5, 3], 10, 10]
+      default: () => [10, 10, 10, 10]
     }
   },
   render (h, context) {
     const { loading, avatar, title, paragraph, active } = context.props;
     return (
-      <div style="width:100%;height:100%;">
+      <div style='width:100%;height:100%;'>
         {loading ? (
-          <div class="skeleton">
+          <div class='skeleton'>
             {avatar && (
-              <div class="skeleton-ava">
+              <div class='skeleton-ava'>
                 <span
                   class={{
-                    'skeleton-ava-img': true,
+                    'skeleton-ava__img': true,
                     'skeleton-active': active
                   }}
                 />
               </div>
             )}
-            <div class="skeleton-main">
+            <div class='skeleton-main'>
               {title && (
                 <h3
                   class={{
-                    'skeleton-line': true,
-                    'skeleton-title': true,
+                    'skeleton-main__line': true,
+                    'skeleton-main__title': true,
                     'skeleton-active': active
                   }}
                 />
@@ -56,8 +56,7 @@ export default {
                   return (
                     <div
                       class={{
-                        'skeleton-main-line': true,
-                        'skeleton-line': true,
+                        'skeleton-main__line': true,
                         'skeleton-active': active
                       }}
                       key={index}
@@ -68,8 +67,7 @@ export default {
                   return (
                     <div
                       class={{
-                        'skeleton-main-line': true,
-                        'skeleton-main-mline': true
+                        'skeleton-main__mline': true
                       }}
                       key={index}
                     >
@@ -82,7 +80,7 @@ export default {
                             <div
                               key={`c${c}${index}`}
                               class={{
-                                'skeleton-line': true,
+                                'mline-item': true,
                                 'skeleton-active': active
                               }}
                               style={{ width: `${c * 10}%` }}
