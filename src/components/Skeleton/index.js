@@ -27,26 +27,25 @@ export default {
   render (h, context) {
     const { loading, avatar, title, paragraph, active } = context.props;
     return (
-      <div style='width:100%;height:100%;'>
+      <div class='skeleton'>
         {loading ? (
-          <div class='skeleton'>
+          <div
+            class={{
+              'skeleton-container': true,
+              'skeleton-active': active
+            }}
+          >
             {avatar && (
-              <div class='skeleton-ava'>
-                <span
-                  class={{
-                    'skeleton-ava__img': true,
-                    'skeleton-active': active
-                  }}
-                />
+              <div class='skeleton-container__ava'>
+                <span class='ava-pic' />
               </div>
             )}
-            <div class='skeleton-main'>
+            <div class='skeleton-container__main'>
               {title && (
                 <h3
                   class={{
-                    'skeleton-main__line': true,
-                    'skeleton-main__title': true,
-                    'skeleton-active': active
+                    'main-line': true,
+                    'main-title': true
                   }}
                 />
               )}
@@ -55,22 +54,14 @@ export default {
                 if (type === '[object Number]') {
                   return (
                     <div
-                      class={{
-                        'skeleton-main__line': true,
-                        'skeleton-active': active
-                      }}
+                      class='main-line'
                       key={index}
                       style={{ width: `${item * 10}%` }}
                     />
                   );
                 } else if (type === '[object Array]') {
                   return (
-                    <div
-                      class={{
-                        'skeleton-main__mline': true
-                      }}
-                      key={index}
-                    >
+                    <div class='main-mline' key={index}>
                       {item.map((c, index) => {
                         if (
                           Object.prototype.toString.call(c) ===
@@ -79,10 +70,7 @@ export default {
                           return (
                             <div
                               key={`c${c}${index}`}
-                              class={{
-                                'mline-item': true,
-                                'skeleton-active': active
-                              }}
+                              class='mline-item'
                               style={{ width: `${c * 10}%` }}
                             />
                           );
