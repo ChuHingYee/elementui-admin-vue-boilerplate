@@ -43,5 +43,6 @@ export default {
 <style lang="scss" scoped>
 #app {
   background: #f0f2f5;
+  height: 100%;
 }
 </style>

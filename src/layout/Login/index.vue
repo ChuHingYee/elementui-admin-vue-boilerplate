@@ -31,7 +31,7 @@ export default {
 .login {
   @include flex-center-center();
   height: 100%;
-  background: #d7dee7;
+  background: #001529;
 
   &-container {
     width: 100%;

@@ -36,13 +36,11 @@
           :disabled="isDisabled"
         >登 录</el-button>
       </el-form-item>
-      <el-form-item class="login-form__item">
+      <el-form-item class="login-form__item login-form__props">
         <el-checkbox v-model="form.rememberMe">记住密码</el-checkbox>
+        <router-link :to="{path:'/login/reg'}" class="item-nav">注册</router-link>
       </el-form-item>
     </el-form>
-    <div class="login-nav">
-      <router-link :to="{path:'/login/reg'}" class="login-nav__link">注册</router-link>
-    </div>
   </div>
 </template>
 
@@ -124,10 +122,11 @@ export default {
   display: flex;
   flex-direction: column;
   &-form {
-    width: 280px;
+    width: 380px;
     margin: 0 auto;
-    padding: 15px;
+    padding: 40px 40px 15px;
     background: #fff;
+    border-radius: 5px;
     .is-success {
       /deep/.el-input-group__prepend {
         border-color: $--color-success;
@@ -152,15 +151,21 @@ export default {
     &__btn {
       width: 100%;
     }
-  }
-  &-nav {
-    width: 280px;
-    height: 45px;
-    @include flex-end-center;
-    &__link {
-      font-size: 14px;
-      font-weight: 700;
-      color: $--color-primary;
+    &__props {
+      width: 100%;
+      /deep/.el-form-item__content {
+        width: 100%;
+        @include flex-between-center;
+        &:before {
+          content: normal;
+        }
+        &:after {
+          content: normal;
+        }
+        .item-nav {
+          color: #409eff;
+        }
+      }
     }
   }
 }
